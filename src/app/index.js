@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ngTouch',
+angular.module('lumemAdmin', ['ngAnimate', 'ngCookies', 'ngTouch',
   'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app'])
 
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
@@ -18,15 +18,6 @@ angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ngTouch',
         templateUrl: 'app/views/dashboard.html',
         data: {
           title: 'Dashboard'
-        }
-      })
-      .state('home.profile', {
-        url: '/profile',
-        templateUrl: 'app/views/profile.html',
-        controller: 'ProfileController',
-        controllerAs: 'vm',
-        data: {
-          title: 'Profile'
         }
       })
       .state('home.table', {

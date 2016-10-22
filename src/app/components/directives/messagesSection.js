@@ -20,10 +20,10 @@
                       '    <md-list-item class="md-3-line" ng-repeat="message in messages">' +
                       '    <img class="md-avatar" ng-src="assets/images/einstein.jpg">' +
                       '    <div class="md-list-item-text">' +
-                      '      <h3>{{message.subject}}</h3>' +
-                      '      <h4>{{message.userName}}</h4>' +
+                      '      <h3>{{message.areaName}}</h3>' +
                       '      <p>{{message.text}}</p>' +
                       '    </div>' +
+                      '    <md-divider/>' +
                       '    </md-list-item>' +
                       '  </md-list>' +
                       '</section>',

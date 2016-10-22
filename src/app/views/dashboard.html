@@ -1,16 +1,34 @@
 <div layout-gt-md="row">
-  <panel-widget flex title="Site visitors" template="app/views/partials/visitors.html" class="fixed-height-widget"></panel-widget>
-  <panel-widget flex title="Warnings" template="app/views/partials/warnings.html" class="fixed-height-widget"></panel-widget>
-  <panel-widget flex title="Memory load" template="app/views/partials/memory.html" class="fixed-height-widget"></panel-widget>
+  <panel-widget flex title="Lux Levels" 
+                     template="app/views/partials/historical.html" 
+                     options="true"></panel-widget>
 </div>
 
-<div layout-gt-md="row">
-  <panel-widget flex title="Server Control Panel" template="app/views/partials/controlPanel.html" class="fixed-height-widget"></panel-widget>
-  <panel-widget flex title="Usage Stats" template="app/views/partials/usage.html" class="fixed-height-widget"></panel-widget>
-  <panel-widget flex title="Autocomplete Input" template="app/views/partials/autocomplete.html" options="true" class="fixed-height-widget"></panel-widget>
-</div>
+<div ng-controller='DashboardController as vm'>
+<div class="row">
+  <div ng-repeat="luxState in vm.deviceLuxData">
+    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+    <div class="col-sm-4" layout-gt-md="row">
+      <panel-widget flex='nogrow' 
+                    title="{{luxState.device}}" 
+                    class="fixed-height-widget">
 
-<div layout-gt-md="row">
-  <panel-widget flex title="Performance" template="app/views/partials/performance.html" options="true"></panel-widget>
-  <panel-widget flex title="TODO list" template="app/views/partials/checkboxes.html"></panel-widget>
+            <div ng-model="lsc.deviceName"
+                 ng-init="lsc.deviceName='{{$index}}'" />
+            <div ng-model="lsc.luxValue"
+                 ng-init="lscluxValue=$index" />
+
+        <md-content ng-controller="LuxStateController as lsc" 
+                    class="md-padding" layout="row">
+          <div flex='grow'>
+            <div ng-model="lsc.deviceName" value ="{{luxState.device}}" />
+            <div ng-model="lsc.luxValue" value="{{luxState.lux}}" />
+            <nvd3 options="lsc.chartOptions" data="lsc.data"></nvd3>
+          </div>
+        </md-content>
+      </panel-widget>
+    </div>
+  </div>
 </div>
+</div>
+                    <!--template="app/views/partials/luxState.html" -->

@@ -4,20 +4,22 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>Issue</th>
+            <th>Device</th>
             <th>Status</th>
-            <th>Progress</th>
+            <th>Lux Level</th>
+            <th>Lux</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="data in vm.tableData track by $index">
             <td data-title="ID">{{$index + 1}}</td>
-            <td data-title="Issue">{{data.issue}}</td>
+            <td data-title="Device">{{data.device}}</td>
             <td data-title="Status">{{data.status}}</td>
-            <td data-title="Progress">
+            <td data-title="Lux Level">{{data.lux}}</td>
+            <td data-title="Lux">
                 <md-progress-linear class="table-progress {{data.class}}"
                                     md-mode="determinate"
-                                    value={{data.progress}}>
+                                    value={{data.lux}}>
                 </md-progress-linear>
             </td>
         </tr>
